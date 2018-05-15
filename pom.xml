@@ -15,9 +15,9 @@
 
     <distributionManagement>
         <repository>
-            <id>minio</id>
-            <name>myMinio</name>
-            <url>https://minio.mncloudsolutions.com/release</url>
+            <id>couchdb</id>
+            <name>myCouch</name>
+            <url>https://couchdb.mncloudsolutions.com/releases/slax-scheduler</url>
         </repository>
     </distributionManagement>
     <build>
