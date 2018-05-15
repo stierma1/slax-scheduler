@@ -15,9 +15,9 @@
 
     <distributionManagement>
         <repository>
-            <id>couchdb</id>
-            <name>myCouch</name>
-            <url>https://couchdb.mncloudsolutions.com/releases/slax-scheduler</url>
+            <id>webdav</id>
+            <name>myWebdav</name>
+            <url>http://webdav.mncloudsolutions.com</url>
         </repository>
     </distributionManagement>
     <build>
