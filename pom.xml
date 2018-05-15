@@ -4,13 +4,13 @@
 
     <groupId>com.github.stierma1</groupId>
     <artifactId>slax-scheduler</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
 
     <scm>
         <connection>scm:git:https://github.com/stierma1/slax-scheduler.git</connection>
         <developerConnection>scm:git:https://github.com/stierma1/slax-scheduler.git</developerConnection>
         <url>https://github.com/stierma1/slax-scheduler</url>
-      <tag>HEAD</tag>
+      <tag>slax-scheduler-1.0.3</tag>
   </scm>
 
     <distributionManagement>
