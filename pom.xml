@@ -17,7 +17,7 @@
         <repository>
             <id>minio</id>
             <name>myMinio</name>
-            <url>s3://minio.mncloudsolutions.com</url>
+            <url>https://minio.mncloudsolutions.com/release</url>
         </repository>
     </distributionManagement>
     <build>
