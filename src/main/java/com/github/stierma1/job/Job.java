@@ -21,4 +21,6 @@ public interface Job {
     long getSpawnTime();
     long getEstimatedRemainingExcecutionTime(long currentTime);
     Map<String, Object> getParameters();
+    StringBuilder toJson();
+
 }

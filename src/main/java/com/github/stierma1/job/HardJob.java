@@ -15,4 +15,19 @@ public class HardJob extends AbstractJob {
     public boolean hasHardDeadline() {
         return true;
     }
+
+    public StringBuilder toJson(){
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("{");
+        sb.append("\"class:\":").append("\"HardJob\",");
+        sb.append("\"parentName:\"").append(this.parentName).append(",");
+        sb.append("\"spawnTime:\"").append(this.spawnTime).append(",");
+        sb.append("\"deadline:\"").append(this.deadline).append(",");
+        sb.append("\"estimatedExecutionTime:\"").append(this.estimatedExecutionTime);
+        sb.append("}");
+
+        return sb;
+    }
+
 }

@@ -248,7 +248,7 @@ public class SlaxSchedulerImpl implements SlaxScheduler {
                 this.jobCompleted(job);
             });
         } catch (Exception e){
-            this.removeJob(jobCandidate);
+            this.jobCompleted(jobCandidate);
             throw e;
         }
     }
@@ -259,6 +259,7 @@ public class SlaxSchedulerImpl implements SlaxScheduler {
         reportParams.put("jobId", job.getId());
         reportParams.put("job", job);
         this.report("job-complete", Collections.unmodifiableMap(reportParams));
+        this.executeLeastSlackJob();
     }
 
     public void restartJob(Job job){
@@ -335,6 +336,54 @@ public class SlaxSchedulerImpl implements SlaxScheduler {
         }
     }
 
+    public StringBuilder jobsToJson(){
+        StringBuilder sb = new StringBuilder();
+        Map<String, Job> jobs = this.getJobs();
+        sb.append("{");
+
+        for(Map.Entry<String, Job> jobEntry : jobs.entrySet()){
+            sb.append("\"").append(jobEntry.getKey()).append("\":").append(jobEntry.getValue().toJson()).append(",");
+        }
+
+        if(sb.lastIndexOf(",") == sb.length() - 1){
+            sb = new StringBuilder(sb.substring(0, sb.length() - 1));
+        }
+
+        sb.append("}");
+        return sb;
+
+    }
+
+    public StringBuilder tasksToJson(){
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("{");
+
+        for(Map.Entry<String, Task> taskEntry : this.tasks.entrySet()){
+            sb.append("\"").append(taskEntry.getKey()).append("\":").append(taskEntry.getValue().toJson()).append(",");
+        }
+
+
+        if(sb.lastIndexOf(",") == sb.length() - 1){
+            sb = new StringBuilder(sb.substring(0, sb.length() - 1));
+        }
+
+        sb.append("}");
+        return sb;
+    }
+
+    public StringBuilder tasksAndJobsToJson(){
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("{");
+
+        sb.append("\"tasks\":").append(this.tasksToJson()).append(",");
+        sb.append("\"jobs\":").append(this.jobsToJson());
+
+        sb.append("}");
+        return sb;
+    }
+
     public class PeriodicRunnable implements Runnable{
         PeriodicTask task;
         SlaxScheduler scheduler;
@@ -349,7 +398,7 @@ public class SlaxSchedulerImpl implements SlaxScheduler {
 
         }
 
-        public boolean isAssociatedExecutor(Task task){
+        public boolean isAssociatedRunnable(Task task){
             return this.task == task;
         }
 

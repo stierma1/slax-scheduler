@@ -1,12 +1,13 @@
 package com.github.stierma1.job;
 
+import com.github.stierma1.IToJson;
 import com.github.stierma1.SlaxScheduler;
 
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
-public abstract class AbstractJob implements Job, Comparable<Job> {
+public abstract class AbstractJob implements Job, Comparable<Job>, IToJson {
 
     protected String id = UUID.randomUUID().toString();
     protected String parentName;

@@ -12,4 +12,5 @@ public interface Task {
     double getUtilization();
     long getEstimatedExecutionTime();
     long getEstimatedExecutionTime(Map<String, Object> params);
+    StringBuilder toJson();
 }
